@@ -1,4 +1,4 @@
-Projeto 1 da disciplina de Design Colaborativo Ágil
+Projeto 1 da disciplina de Desenvolvimento Ágil
 
 Feito por:
 
