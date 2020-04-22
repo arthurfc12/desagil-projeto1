@@ -8,6 +8,6 @@ Antonio Fuziy;
 
 Arthur Carvalho;
 
-Guilherme Lunneta;
+Guilherme Luneta;
 
 Victor Vergara;
