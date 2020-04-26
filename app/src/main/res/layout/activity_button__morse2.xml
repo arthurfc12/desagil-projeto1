@@ -25,4 +25,21 @@
         android:layout_marginVertical="500dp"
         android:text="Button Morse"
         android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonGoToList"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/rounded_button" />
+    
+    <ImageView
+        android:id="@+id/listImage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/list"
+        android:layout_marginTop="415dp"
+        android:layout_marginLeft="35dp"/>
+
 </RelativeLayout>
