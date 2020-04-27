@@ -2,11 +2,18 @@ package br.pro.hashi.ensino.desagil.projeto1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class Button_Morse extends AppCompatActivity {
+
+    public void startListActivity() {
+        Intent startListActivity = new Intent(this, ListActivity.class);
+
+        startActivity(startListActivity);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,15 @@ public class Button_Morse extends AppCompatActivity {
             String content = text+ dado;
             escrita.setText(content);
             return true;
+        });
+
+        Button buttonToList = findViewById(R.id.buttonGoToList);
+
+        Intent intentFromList = getIntent();
+        escrita.setText(intentFromList.getStringExtra("string"));
+
+        buttonToList.setOnClickListener((view) -> {
+            startListActivity();
         });
     }
 }
