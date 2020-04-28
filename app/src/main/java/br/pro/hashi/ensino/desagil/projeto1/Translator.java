@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Stack;
+import java.util.Scanner;
 
 
 public class Translator {
@@ -224,32 +225,84 @@ public class Translator {
         map.put(node0.getValue(),node0);
         node0.setParent(nodeBlank4);
 
+        map.put(node1.getValue(),node1);
+        node1.setParent(nodeJ);
+
+        map.put(node5.getValue(),node5);
+        node5.setParent(nodeH);
+
+        map.put(node4.getValue(),node4);
+        node4.setParent(nodeH);
+
+        map.put(node3.getValue(),node3);
+        node3.setParent(nodeV);
+
+        map.put(node6.getValue(),node6);
+        node6.setParent(nodeB);
+
+        map.put(node7.getValue(),node7);
+        node7.setParent(nodeZ);
+
     }
 
 
     // Você deve mudar o recheio deste método,
     // de acordo com os requisitos do projeto.
     public char morseToChar(String code) {
-        return ' ';
+        Node atual = root;
+
+        for (int i = 0; i < code.length(); i++) {
+            if (code.charAt(i) == '.'){
+                atual = atual.getLeft();
+            } else if(code.charAt(i) == '-'){
+                atual = atual.getRight();
+            } else{
+                return ' ';
+            }
+        }
+        return atual.getValue();
     }
 
 
-    // Você deve mudar o recheio deste método,
-    // de acordo com os requisitos do projeto.
-    private String charToMorse(Node node) {
-        return " ";
+        // Você deve mudar o recheio deste método,
+        // de acordo com os requisitos do projeto.
+        private String charToMorse(Node node) {
+        String morseNovo = "";
+        String morseTotal = "";
+        Node parent = node.getParent();
+        boolean parentExists = true;
+
+            while(parentExists == true){
+            if (parent.getLeft() == node){
+                morseNovo = ".";
+                morseTotal.concat(morseNovo);
+                node = parent;
+            } else if(parent.getRight() == node){
+                morseNovo = "-";
+                morseTotal.concat(morseNovo);
+                node = parent;
+            }else{
+                parentExists = false;
+            }
+            //pegar a string de pontos e dashes e invertê-la usando java.util.Scanner
+        }
+
+        StringBuilder sb = new StringBuilder(morseTotal);
+        String morseFinal = sb.reverse().toString();
+
+        return morseFinal;
+        }
+
+
+        // Este método deve permanecer como está.
+        public String charToMorse(char c) {
+            return charToMorse(map.get(c));
+        }
+
+
+        // Você deve mudar o recheio deste método,
+        // de acordo com os requisitos do projeto.
+        public LinkedList<String> getCodes() {
+            return new LinkedList<>();
+        }
     }
-
-
-    // Este método deve permanecer como está.
-    public String charToMorse(char c) {
-        return charToMorse(map.get(c));
-    }
-
-
-    // Você deve mudar o recheio deste método,
-    // de acordo com os requisitos do projeto.
-    public LinkedList<String> getCodes() {
-        return new LinkedList<>();
-    }
-}
