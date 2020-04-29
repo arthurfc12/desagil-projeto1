@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Button_Morse extends AppCompatActivity {
-
+    Translator tradutor= new Translator();
     public void startListActivity() {
         Intent startListActivity = new Intent(this, ListActivity.class);
 
@@ -19,7 +19,7 @@ public class Button_Morse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button__morse2);
-        
+
         TextView escrita = findViewById(R.id.Title_button);
         Button button_morse = findViewById(R.id.ButtonMorse);
         Button buttonToList = findViewById(R.id.buttonGoToList);
@@ -33,12 +33,13 @@ public class Button_Morse extends AppCompatActivity {
             escrita.setText(content);
         });
 
-      /*  endChar.setOnClickListener((view) -> {
+        endChar.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
-            String dado = " ";
-            String content = text+ dado;
+            String text_snip= ;//botar o parse
+            char letra= tradutor.morseToChar(text_snip);
+            String content = text+ letra;
             escrita.setText(content);
-        }); */
+        });
 
         button_morse.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
