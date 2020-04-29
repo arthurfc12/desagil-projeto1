@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 public class Button_Morse extends AppCompatActivity {
 
+    TextView escrita = findViewById(R.id.Title_button);
+    Button button_morse = findViewById(R.id.ButtonMorse);
+    Button space = findViewById(R.id.space);
+    Button endChar = findViewById(R.id.endChar);
+
     public void startListActivity() {
         Intent startListActivity = new Intent(this, ListActivity.class);
 
@@ -20,9 +25,20 @@ public class Button_Morse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button__morse2);
 
-        TextView escrita = findViewById(R.id.Title_button);
-        Button button_morse = findViewById(R.id.ButtonMorse);
-
+        space.setOnClickListener((view) -> {
+            String text = escrita.getText().toString();
+            String dado = " ";
+            String content = text+ dado;
+            escrita.setText(content);
+        });
+/*
+        endChar.setOnClickListener((view) -> {
+            String text = escrita.getText().toString();
+            String dado = "";
+            String content = text+ dado;
+            escrita.setText(content);
+        });
+        */
         button_morse.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
             String dado = ".";
@@ -46,4 +62,5 @@ public class Button_Morse extends AppCompatActivity {
             startListActivity();
         });
     }
+
 }
