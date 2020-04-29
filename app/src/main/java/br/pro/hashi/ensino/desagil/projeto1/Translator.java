@@ -7,8 +7,10 @@ package br.pro.hashi.ensino.desagil.projeto1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.Scanner;
 
@@ -203,7 +205,7 @@ public class Translator {
 
         map.put(nodeBlank3.getValue(),nodeBlank3);
         nodeBlank3.setLeft(node8);
-        nodeBlank3.setParent(nodeD);
+        nodeBlank3.setParent(nodeO);
 
         map.put(nodeBlank4.getValue(),nodeBlank4);
         nodeBlank4.setRight(node0);
@@ -267,24 +269,30 @@ public class Translator {
         // Você deve mudar o recheio deste método,
         // de acordo com os requisitos do projeto.
         private String charToMorse(Node node) {
-        String morseNovo = "";
+        String morseNew;
         String morseTotal = "";
         Node parent = node.getParent();
         boolean parentExists = true;
 
-            while(parentExists == true){
-            if (parent.getLeft() == node){
-                morseNovo = ".";
-                morseTotal.concat(morseNovo);
-                node = parent;
-            } else if(parent.getRight() == node){
-                morseNovo = "-";
-                morseTotal.concat(morseNovo);
-                node = parent;
-            }else{
-                parentExists = false;
-            }
-            //pegar a string de pontos e dashes e invertê-la usando java.util.Scanner
+            while(parentExists == true) {
+                if (parent != null) {
+                    if (parent.getLeft() == node) {
+                        morseNew = ".";
+                        morseTotal = morseTotal + morseNew;
+                        node = node.getParent();
+                        parent = parent.getParent();
+                    } else if (parent.getRight() == node) {
+                        morseNew = "-";
+                        morseTotal = morseTotal + morseNew;
+                        node = node.getParent();
+                        parent = parent.getParent();
+                    } else {
+                        parentExists = false;
+                    }
+                    //pegar a string de pontos e dashes e invertê-la usando java.util.Scanner
+                } else {
+                    parentExists = false;
+                }
         }
 
         StringBuilder sb = new StringBuilder(morseTotal);
@@ -303,6 +311,30 @@ public class Translator {
         // Você deve mudar o recheio deste método,
         // de acordo com os requisitos do projeto.
         public LinkedList<String> getCodes() {
-            return new LinkedList<>();
+
+            LinkedList<String> finalList = new LinkedList<>();
+
+            Queue<Node> queue = new LinkedList<>();
+
+            queue.add(root);
+
+            while (!queue.isEmpty()) {
+                Node node = queue.element();
+
+                Node left = node.getLeft();
+                Node right = node.getRight();
+
+                    if (left != null) {
+                        queue.add(left);
+                    }
+                    if (right != null) {
+                        queue.add(right);
+                    }
+                    if (node.getValue() != ' ' && node.getValue() != '/' && node.getValue() != '+' && node.getValue() != '=') {
+                        finalList.add(charToMorse(node.getValue()));
+                    }
+                    queue.remove();
+            }
+            return finalList;
         }
     }
