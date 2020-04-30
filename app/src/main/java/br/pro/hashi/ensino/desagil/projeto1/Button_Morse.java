@@ -25,6 +25,7 @@ public class Button_Morse extends AppCompatActivity {
         Button buttonToList = findViewById(R.id.buttonGoToList);
         Button space = findViewById(R.id.space);
         Button endChar = findViewById(R.id.endChar);
+        Button buttonToCharToMorseDic = findViewById(R.id.buttonGoToDic1);
 
         space.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
@@ -62,16 +63,7 @@ public class Button_Morse extends AppCompatActivity {
                 char letra= tradutor.morseToChar(morse);
                 String content = n_morse + letra;
                 escrita.setText(content);
-            }else{
-                System.out.println("Parabens vc quer criar um char sem codigo morse!!! Repense sua vida");
             }
-            /*for (int i=0; i<text.length(); i++){
-
-                    }
-
-            String[] parts = text.split("(?=-)");
-            String part1 = parts[0];
-            String part2 = parts[1]; */
 
         });
 
@@ -93,6 +85,12 @@ public class Button_Morse extends AppCompatActivity {
 
         buttonToList.setOnClickListener((view) -> {
             startListActivity();
+        });
+
+        buttonToCharToMorseDic.setText("RM");
+        buttonToCharToMorseDic.setOnClickListener((view) -> {
+            Intent startDicCharToMorse = new Intent(Button_Morse.this, DicRomanToMorseActivity.class);
+            startActivity(startDicCharToMorse);
         });
     }
 }
