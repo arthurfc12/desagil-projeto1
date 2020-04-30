@@ -26,6 +26,8 @@ public class Button_Morse extends AppCompatActivity {
         Button space = findViewById(R.id.space);
         Button endChar = findViewById(R.id.endChar);
         Button buttonToCharToMorseDic = findViewById(R.id.buttonGoToDic1);
+        Button buttonErase = findViewById(R.id.buttonErase);
+        Button buttonEraseAll = findViewById(R.id.buttonEraseAll);
 
         space.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
@@ -97,6 +99,20 @@ public class Button_Morse extends AppCompatActivity {
         buttonToCharToMorseDic.setOnClickListener((view) -> {
             Intent startDicCharToMorse = new Intent(Button_Morse.this, DicRomanToMorseActivity.class);
             startActivity(startDicCharToMorse);
+        });
+
+        buttonErase.setOnClickListener((view) -> {
+            if (escrita.length() != 0) {
+                String tudo = escrita.getText().toString();
+                String novo = tudo.substring(0, tudo.length()-1);
+                escrita.setText(novo);
+            }
+        });
+
+        buttonEraseAll.setOnClickListener((view) -> {
+            if (escrita.length() != 0) {
+                escrita.setText("");
+            }
         });
     }
 }
