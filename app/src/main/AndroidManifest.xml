@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListActivity"></activity>
-        <activity android:name=".Node"></activity>
-        <activity android:name=".Translator"></activity>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".DicRomanToMorseActivity" />
+        <activity android:name=".Node" />
+        <activity android:name=".Translator" />
         <activity android:name=".Button_Morse">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
