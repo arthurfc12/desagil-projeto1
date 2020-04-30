@@ -42,19 +42,19 @@ public class Button_Morse extends AppCompatActivity {
                 if ((text.contains("-"))){
                     if((text.contains("."))){ //Tem os 2
                         if (text.indexOf('-')<text.indexOf('.')){ // - vem antes
-                            morse = text.substring(text.indexOf('-'),text.length()-1);
+                            morse = text.substring(text.indexOf('-'));
                             n_morse = text.substring(0,text.indexOf('-'));
                         }else {// . vem antes
-                            morse = text.substring(text.indexOf('.'),text.length()-1);
+                            morse = text.substring(text.indexOf('.'));
                             n_morse = text.substring(0,text.indexOf('.'));
                         }
                     }else{ //so tem "-"
-                        morse = text.substring(text.indexOf('-'),text.length()-1);
+                        morse = text.substring(text.indexOf('-'));
                         n_morse = text.substring(0,text.indexOf('-'));
                     }
 
                 }else if((text.contains("."))){ //So tem .
-                    morse = text.substring(text.indexOf('.'),text.length()-1);
+                    morse = text.substring(text.indexOf('.'));
                     n_morse = text.substring(0,text.indexOf('.'));
                 }
 
