@@ -35,10 +35,34 @@ public class Button_Morse extends AppCompatActivity {
 
         endChar.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
-            String text_snip= ;//botar o parse
-            char letra= tradutor.morseToChar(text_snip);
-            String content = text+ letra;
-            escrita.setText(content);
+            String morse="";
+            if (text.length()!=0){
+                if ((text.contains("-"))){
+                    if((text.contains("."))){ //Tem os 2
+                        if (text.indexOf('-')<text.indexOf('.')){ // - vem antes
+                            morse = text.substring(text.indexOf('-'), -1);
+                        }else {// . vem antes
+                            morse = text.substring(text.indexOf('.'), -1);
+                        }
+                    }else{ //so tem "-"
+                        morse = text.substring(text.indexOf('-'), -1);
+                    }
+
+                }else if((text.contains("."))){ //So tem .
+                    morse = text.substring(text.indexOf('.'), -1);
+                }
+                char letra= tradutor.morseToChar(morse);
+                String content = text + letra;
+                escrita.setText(content);
+            }
+            /*for (int i=0; i<text.length(); i++){
+
+                    }
+
+            String[] parts = text.split("(?=-)");
+            String part1 = parts[0];
+            String part2 = parts[1]; */
+
         });
 
         button_morse.setOnClickListener((view) -> {
