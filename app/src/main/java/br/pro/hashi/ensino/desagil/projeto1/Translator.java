@@ -337,4 +337,8 @@ public class Translator {
             }
             return finalList;
         }
+
+        public HashMap getMap() {
+            return map;
+        }
     }
