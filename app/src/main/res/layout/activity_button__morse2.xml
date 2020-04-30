@@ -52,7 +52,7 @@
         android:layout_marginEnd="236dp"
         android:layout_marginBottom="114dp"
         android:text="End Char"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/space"
@@ -62,7 +62,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="114dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:text="Space" />
 
 </RelativeLayout>

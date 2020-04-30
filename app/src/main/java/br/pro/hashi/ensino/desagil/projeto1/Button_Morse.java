@@ -35,25 +35,35 @@ public class Button_Morse extends AppCompatActivity {
 
         endChar.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
-            String morse="";
+            String morse=null;
+            String n_morse=null;
             if (text.length()!=0){
+                System.out.println("maior q 0");
                 if ((text.contains("-"))){
                     if((text.contains("."))){ //Tem os 2
                         if (text.indexOf('-')<text.indexOf('.')){ // - vem antes
-                            morse = text.substring(text.indexOf('-'), -1);
+                            morse = text.substring(text.indexOf('-'),text.length()-1);
+                            n_morse = text.substring(0,text.indexOf('-'));
                         }else {// . vem antes
-                            morse = text.substring(text.indexOf('.'), -1);
+                            morse = text.substring(text.indexOf('.'),text.length()-1);
+                            n_morse = text.substring(0,text.indexOf('.'));
                         }
                     }else{ //so tem "-"
-                        morse = text.substring(text.indexOf('-'), -1);
+                        morse = text.substring(text.indexOf('-'),text.length()-1);
+                        n_morse = text.substring(0,text.indexOf('-'));
                     }
 
                 }else if((text.contains("."))){ //So tem .
-                    morse = text.substring(text.indexOf('.'), -1);
+                    morse = text.substring(text.indexOf('.'),text.length()-1);
+                    n_morse = text.substring(0,text.indexOf('.'));
                 }
+
+                System.out.println(morse);
                 char letra= tradutor.morseToChar(morse);
-                String content = text + letra;
+                String content = n_morse + letra;
                 escrita.setText(content);
+            }else{
+                System.out.println("Parabens vc quer criar um char sem codigo morse!!! Repense sua vida");
             }
             /*for (int i=0; i<text.length(); i++){
 
