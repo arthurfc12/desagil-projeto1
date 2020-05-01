@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class Button_Morse extends AppCompatActivity {
-    Translator tradutor= new Translator();
+    Translator tradutor = new Translator();
+    ArrayAdapter<String> arrayAdapter;
+    ArrayList<String> history_list;
+
     public void startListActivity() {
         Intent startListActivity = new Intent(this, ListActivity.class);
 
@@ -20,15 +27,28 @@ public class Button_Morse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button__morse2);
 
+        //TextView where the message is written
         TextView escrita = findViewById(R.id.Title_button);
+        //Button to write the morse code
         Button button_morse = findViewById(R.id.ButtonMorse);
+        //Button to send the word from the ListView to the message
         Button buttonToList = findViewById(R.id.buttonGoToList);
+        //Button to add a space in the message
         Button space = findViewById(R.id.space);
+        //Button to start the converter
         Button endChar = findViewById(R.id.endChar);
+        //Button that shows the dictionary for the morse code
         Button buttonToCharToMorseDic = findViewById(R.id.buttonGoToDic1);
-        Button buttonErase = findViewById(R.id.buttonErase);
+        //Send button
+        Button buttonSend = findViewById(R.id.buttonSend);
+        //List of most common phrases
+        ListView history = findViewById(R.id.history);
+        //Backspace button
+        Button backspace = findViewById(R.id.buttonErase);
+        //Erase All
         Button buttonEraseAll = findViewById(R.id.buttonEraseAll);
 
+        //Button to add a space on the morse code
         space.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
             String dado = " ";
@@ -36,6 +56,22 @@ public class Button_Morse extends AppCompatActivity {
             escrita.setText(content);
         });
 
+        //Button to delete last string from morse code
+        backspace.setOnClickListener((view)->{
+            String text = escrita.getText().toString();
+            if (text.length()>0){
+                text = text.substring(0, text.length()-1);
+                escrita.setText(text);
+            }
+        });
+
+        buttonEraseAll.setOnClickListener((view) -> {
+            if (escrita.length() != 0) {
+                escrita.setText("");
+            }
+        });
+
+        //Button to convert morse code to dic
         endChar.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
             String morse=null;
@@ -75,12 +111,30 @@ public class Button_Morse extends AppCompatActivity {
 
         });
 
+        history_list = new ArrayList<>();
+
+        arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, history_list);
+
+        //Button to send messages and show these messages in the history of last sent messages
+        buttonSend.setOnClickListener((view) -> {
+            String lastSend = escrita.getText().toString();
+            if (lastSend.length() > 0) {
+                history_list.add(lastSend);
+                history.setAdapter(arrayAdapter);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+
+        //Button to write morse code
         button_morse.setOnClickListener((view) -> {
             String text = escrita.getText().toString();
             String dado = ".";
             String content = text+ dado;
             escrita.setText(content);
         });
+
+        //Button to write morse code
         button_morse.setOnLongClickListener((view) -> {
             String text = escrita.getText().toString();
             String dado = "-";
@@ -88,6 +142,8 @@ public class Button_Morse extends AppCompatActivity {
             escrita.setText(content);
             return true;
         });
+
+        //Sending the ListView item choosed to the MainActivity TextView where the message is been written
         Intent intentFromList = getIntent();
         escrita.setText(intentFromList.getStringExtra("string"));
 
@@ -95,24 +151,11 @@ public class Button_Morse extends AppCompatActivity {
             startListActivity();
         });
 
+        //Converting the letters from the morse code to dic
         buttonToCharToMorseDic.setText("RM");
         buttonToCharToMorseDic.setOnClickListener((view) -> {
             Intent startDicCharToMorse = new Intent(Button_Morse.this, DicRomanToMorseActivity.class);
             startActivity(startDicCharToMorse);
-        });
-
-        buttonErase.setOnClickListener((view) -> {
-            if (escrita.length() != 0) {
-                String tudo = escrita.getText().toString();
-                String novo = tudo.substring(0, tudo.length()-1);
-                escrita.setText(novo);
-            }
-        });
-
-        buttonEraseAll.setOnClickListener((view) -> {
-            if (escrita.length() != 0) {
-                escrita.setText("");
-            }
         });
     }
 }
