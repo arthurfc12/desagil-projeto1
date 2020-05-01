@@ -128,6 +128,7 @@ public class Button_Morse extends AppCompatActivity {
                 history.setAdapter(arrayAdapter);
                 arrayAdapter.notifyDataSetChanged();
             }
+            escrita.setText("");
         });
 
         //Button to write morse code
