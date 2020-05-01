@@ -97,10 +97,14 @@ public class Button_Morse extends AppCompatActivity {
                     n_morse = text.substring(0,text.indexOf('.'));
                 }
                 if((text.contains("."))||(text.contains("-"))){
-
-
+                    char letra;
                     System.out.println(morse);
-                    char letra= tradutor.morseToChar(morse);
+                    try {
+                        letra = tradutor.morseToChar(morse);
+                    }catch (Exception e){
+                        letra='\0';
+                        System.out.println("Digite o Morse Corretamente pf meu caro imbecil!!!");
+                    }
                     String content = n_morse + letra;
                     escrita.setText(content);
                 }
