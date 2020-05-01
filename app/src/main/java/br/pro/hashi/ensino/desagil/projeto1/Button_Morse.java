@@ -101,12 +101,13 @@ public class Button_Morse extends AppCompatActivity {
                     System.out.println(morse);
                     try {
                         letra = tradutor.morseToChar(morse);
+                        String content = n_morse + letra;
+                        escrita.setText(content);
                     }catch (Exception e){
-                        letra='\0';
                         System.out.println("Digite o Morse Corretamente pf meu caro imbecil!!!");
+                        escrita.setText(n_morse);
                     }
-                    String content = n_morse + letra;
-                    escrita.setText(content);
+
                 }
             }else{
                 System.out.println("Parabens vc quer criar um char sem codigo morse!!! Repense sua vida");
