@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,6 +23,13 @@ public class Button_Morse extends AppCompatActivity {
         Intent startListActivity = new Intent(this, ListActivity.class);
 
         startActivity(startListActivity);
+    }
+
+    private void showToast(String text) {
+
+        Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+
+        toast.show();
     }
 
     @Override
@@ -129,6 +139,25 @@ public class Button_Morse extends AppCompatActivity {
                 history.setAdapter(arrayAdapter);
                 arrayAdapter.notifyDataSetChanged();
             }
+
+            String message = escrita.getText().toString();
+
+            if (message.isEmpty()) {
+                showToast("Mensagem inválida!");
+                return;
+            }
+
+            String phone = "+5511993701071"; //textPhone.getText().toString();
+
+            if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
+                showToast("Número inválido!");
+                return;
+            }
+
+            SmsManager manager = SmsManager.getDefault();
+            manager.sendTextMessage(phone, null, message, null, null);
+
+
             escrita.setText("");
         });
 
