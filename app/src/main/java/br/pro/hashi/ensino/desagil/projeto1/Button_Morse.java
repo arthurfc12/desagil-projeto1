@@ -91,7 +91,6 @@ public class Button_Morse extends AppCompatActivity {
             String morse=null;
             String n_morse=null;
             if (text.length()!=0){
-                System.out.println("maior q 0") ;
                 if ((text.contains("-"))){
                     if((text.contains("."))){ //Tem os 2
                         if (text.indexOf('-')<text.indexOf('.')){ // - vem antes
@@ -117,14 +116,13 @@ public class Button_Morse extends AppCompatActivity {
                         letra = tradutor.morseToChar(morse);
                         String content = n_morse + letra;
                         escrita.setText(content);
-                    }catch (Exception e){
-                        System.out.println("Digite o Morse Corretamente pf meu caro imbecil!!!");
+                    } catch (Exception e) {
                         escrita.setText(n_morse);
                     }
 
                 }
-            }else{
-                System.out.println("Parabens vc quer criar um char sem codigo morse!!! Repense sua vida");
+            } else{
+
             }
         });
 
