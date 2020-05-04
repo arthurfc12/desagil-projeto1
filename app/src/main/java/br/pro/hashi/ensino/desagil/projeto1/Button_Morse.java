@@ -8,6 +8,7 @@ import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,8 @@ public class Button_Morse extends AppCompatActivity {
 
         //TextView where the message is written
         TextView escrita = findViewById(R.id.Title_button);
+        //Phone number input
+        EditText textPhone = findViewById(R.id.textPhone);
         //Button to write the morse code
         Button button_morse = findViewById(R.id.ButtonMorse);
         //Button to send the word from the ListView to the message
@@ -122,9 +125,7 @@ public class Button_Morse extends AppCompatActivity {
                 }
             }else{
                 System.out.println("Parabens vc quer criar um char sem codigo morse!!! Repense sua vida");
-
             }
-
         });
 
         history_list = new ArrayList<>();
@@ -148,7 +149,7 @@ public class Button_Morse extends AppCompatActivity {
                 return;
             }
 
-            String phone = "+5511993701071"; //textPhone.getText().toString();
+            String phone = textPhone.getText().toString();
 
             if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
                 showToast("Número inválido!");
@@ -157,7 +158,6 @@ public class Button_Morse extends AppCompatActivity {
 
             SmsManager manager = SmsManager.getDefault();
             manager.sendTextMessage(phone, null, message, null, null);
-
 
             escrita.setText("");
         });

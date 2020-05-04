@@ -16,6 +16,18 @@
         android:text=""
         android:textSize="20sp" />
 
+    <EditText
+        android:id="@+id/textPhone"
+        android:layout_width="230dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="86dp"
+        android:text=""
+        android:background="@drawable/border"
+        android:textSize="15sp" />
+
     <Button
         android:id="@+id/ButtonMorse"
         android:layout_width="220dp"
