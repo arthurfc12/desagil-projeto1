@@ -36,7 +36,9 @@ public class ListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListActivity.this, Button_Morse.class);
                 String itemClicked = (String) list.getItemAtPosition(position);
-                startActivity(intent.putExtra("string", itemClicked));
+                intent.putExtra(Intent.EXTRA_TEXT, itemClicked);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
     }

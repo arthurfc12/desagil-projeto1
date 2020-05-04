@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Button_Morse extends AppCompatActivity {
+    private static final int LIST_ACTIVITY_REQUEST_CODE = 0;
     Translator tradutor = new Translator();
     ArrayAdapter<String> arrayAdapter;
     ArrayList<String> history_list;
@@ -22,7 +23,7 @@ public class Button_Morse extends AppCompatActivity {
     public void startListActivity() {
         Intent startListActivity = new Intent(this, ListActivity.class);
 
-        startActivity(startListActivity);
+        startActivityForResult(startListActivity, LIST_ACTIVITY_REQUEST_CODE);
     }
 
     private void showToast(String text) {
@@ -178,10 +179,6 @@ public class Button_Morse extends AppCompatActivity {
             return true;
         });
 
-        //Sending the ListView item choosed to the MainActivity TextView where the message is been written
-        Intent intentFromList = getIntent();
-        escrita.setText(intentFromList.getStringExtra("string"));
-
         buttonToList.setOnClickListener((view) -> {
             startListActivity();
         });
@@ -192,5 +189,20 @@ public class Button_Morse extends AppCompatActivity {
             Intent startDicCharToMorse = new Intent(Button_Morse.this, DicRomanToMorseActivity.class);
             startActivity(startDicCharToMorse);
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == LIST_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+
+                String returnString = data.getStringExtra(Intent.EXTRA_TEXT);
+
+                TextView escrita = (TextView) findViewById(R.id.Title_button);
+                escrita.setText(returnString);
+            }
+        }
     }
 }
