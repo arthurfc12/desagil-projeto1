@@ -15,7 +15,8 @@
         <activity android:name=".DicRomanToMorseActivity" />
         <activity android:name=".Node" />
         <activity android:name=".Translator" />
-        <activity android:name=".Button_Morse" />
+        <activity android:name=".Button_Morse"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
