@@ -51,8 +51,10 @@ public class Button_Morse extends AppCompatActivity {
         Button space = findViewById(R.id.space);
         //Button to start the converter
         Button endChar = findViewById(R.id.endChar);
-        //Button that shows the dictionary for the morse code
-        Button buttonToCharToMorseDic = findViewById(R.id.buttonGoToDic1);
+        //Button that shows the dictionary from Roman to Morse code
+        Button buttonToCharToMorseDic = findViewById(R.id.buttonGoToDicRomanToMorse);
+        //Button that shows the dictionary from Morse code to Roman
+        Button buttonToMorseToRomanDic = findViewById(R.id.buttonGoToDicMorseToRoman);
         //Send button
         Button buttonSend = findViewById(R.id.buttonSend);
         //List of most common phrases
@@ -185,6 +187,12 @@ public class Button_Morse extends AppCompatActivity {
         buttonToCharToMorseDic.setText("RM");
         buttonToCharToMorseDic.setOnClickListener((view) -> {
             Intent startDicCharToMorse = new Intent(Button_Morse.this, DicRomanToMorseActivity.class);
+            startActivity(startDicCharToMorse);
+        });
+
+        buttonToMorseToRomanDic.setText("MR");
+        buttonToMorseToRomanDic.setOnClickListener((view) -> {
+            Intent startDicCharToMorse = new Intent(Button_Morse.this, DicMorseToRoman.class);
             startActivity(startDicCharToMorse);
         });
     }
