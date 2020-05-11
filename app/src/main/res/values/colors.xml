@@ -5,5 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="examplePurple">#7159c1</color>
     <color name="exampleBlue">#43B1F4</color>
-    <color name="buttonsBackground">#dbdbdb</color>
+    <color name="buttonsBackground">#808080</color>
+    <color name="lightGrey">#f0f0f0</color>
 </resources>
