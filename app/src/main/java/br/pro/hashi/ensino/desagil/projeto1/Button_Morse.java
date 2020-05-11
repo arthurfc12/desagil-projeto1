@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -170,6 +172,15 @@ public class Button_Morse extends AppCompatActivity {
             escrita.setText(content);
         });
 
+        history.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String history_item = (String) history.getItemAtPosition(position);
+                String text = escrita.getText().toString();
+                String content = text + history_item;
+                escrita.setText(content);
+            }
+        });
         //Button to write morse code
         button_morse.setOnLongClickListener((view) -> {
             String text = escrita.getText().toString();
