@@ -15,10 +15,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="345dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="276dp"
+        android:layout_marginEnd="31dp"
+        android:paddingHorizontal="8sp"
         android:background="@drawable/text_view_border"
         android:text=""
         android:textSize="20sp" />
@@ -29,8 +28,8 @@
         android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="86dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="42dp"
         android:hint="Telefone"
         android:textSize="15sp" />
 
@@ -42,7 +41,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="101dp"
-        android:background="@drawable/rounded_button" />
+        android:background="@drawable/rounded_button"
+        android:textSize="30dp"
+        android:text="type"/>
 
     <ImageView
         android:id="@+id/listImage"
@@ -50,8 +51,8 @@
         android:layout_height="20dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="341dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="272dp"
         android:src="@drawable/list" />
 
     <Button
@@ -64,7 +65,7 @@
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="190dp"
         android:background="@drawable/rounded_button"
-        android:textSize="16sp" />
+        android:text="translate"/>
 
     <Button
         android:id="@+id/space"
@@ -74,6 +75,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="21dp"
+        android:text="space"
         android:background="@drawable/rounded_button" />
 
     <Button
@@ -83,7 +85,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="131dp"
         android:background="@drawable/rounded_button"
         android:text="RM"
         android:textSize="25sp" />
@@ -92,20 +94,22 @@
         android:id="@+id/buttonGoToList"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="325dp"
-        android:background="@drawable/rounded_button" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="258dp"
+        android:background="@drawable/rounded_button"
+        android:text="list"/>
 
     <Button
         android:id="@+id/buttonGoToDicMorseToRoman"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="265dp"
+        android:layout_marginTop="194dp"
         android:background="@drawable/rounded_button"
         android:text="Mr"
-        android:textSize="25sp"
-        />
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/buttonErase"
@@ -115,6 +119,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="106dp"
+        android:text="backspace"
         android:background="@drawable/rounded_button" />
 
     <Button
@@ -125,6 +130,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="22dp"
+        android:text="clear"
         android:background="@drawable/rounded_button" />
 
     <Button
@@ -135,15 +141,17 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="274dp"
-        android:background="@drawable/rounded_button" />
+        android:background="@drawable/rounded_button"
+        android:text="send"/>
 
     <ListView
         android:id="@+id/history"
-        android:layout_width="230dp"
+        android:layout_width="150dp"
         android:layout_height="190dp"
-        android:layout_marginStart="235dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="21dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/border" />
 
     <ImageView
