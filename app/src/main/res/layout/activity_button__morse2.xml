@@ -30,8 +30,8 @@
         android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="86dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="43dp"
         android:hint="Telefone"
         android:textSize="15sp" />
 
