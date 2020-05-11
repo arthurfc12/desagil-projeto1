@@ -181,6 +181,8 @@ public class Button_Morse extends AppCompatActivity {
                 escrita.setText(content);
             }
         });
+
+
         //Button to write morse code
         button_morse.setOnLongClickListener((view) -> {
             String text = escrita.getText().toString();
