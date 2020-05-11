@@ -11,11 +11,15 @@
     <TextView
         android:id="@+id/Title_button"
         android:layout_width="290dp"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="325dp"
-        android:layout_marginEnd="21dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="345dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/text_view_border"
         android:text=""
         android:textSize="20sp" />
 
