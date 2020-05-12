@@ -22,6 +22,7 @@ public class Button_Morse extends AppCompatActivity {
     Translator tradutor = new Translator();
     ArrayAdapter<String> arrayAdapter;
     ArrayList<String> history_list;
+    boolean typePhone = true;
 
     public void startListActivity() {
         Intent startListActivity = new Intent(this, ListActivity.class);
@@ -44,7 +45,7 @@ public class Button_Morse extends AppCompatActivity {
         //TextView where the message is written
         TextView escrita = findViewById(R.id.Title_button);
         //Phone number input
-        EditText textPhone = findViewById(R.id.textPhone);
+        TextView textPhone = findViewById(R.id.textPhone);
         //Button to write the morse code
         Button button_morse = findViewById(R.id.ButtonMorse);
         //Button to send the word from the ListView to the message
@@ -65,70 +66,10 @@ public class Button_Morse extends AppCompatActivity {
         Button backspace = findViewById(R.id.buttonErase);
         //Erase All
         Button buttonEraseAll = findViewById(R.id.buttonEraseAll);
-
-        //Button to add a space on the morse code
-        space.setOnClickListener((view) -> {
-            String text = escrita.getText().toString();
-            String dado = " ";
-            String content = text+ dado;
-            escrita.setText(content);
-        });
-
-        //Button to delete last string from morse code
-        backspace.setOnClickListener((view)->{
-            String text = escrita.getText().toString();
-            if (text.length()>0){
-                text = text.substring(0, text.length()-1);
-                escrita.setText(text);
-            }
-        });
-
-        buttonEraseAll.setOnClickListener((view) -> {
-            if (escrita.length() != 0) {
-                escrita.setText("");
-            }
-        });
+        //Set phone button
+        Button setPhone = findViewById(R.id.buttonSetPhone);
 
         //Button to convert morse code to dic
-        endChar.setOnClickListener((view) -> {
-            String text = escrita.getText().toString();
-            String morse=null;
-            String n_morse=null;
-            if (text.length()!=0){
-                if ((text.contains("-"))){
-                    if((text.contains("."))){ //Tem os 2
-                        if (text.indexOf('-')<text.indexOf('.')){ // - vem antes
-                            morse = text.substring(text.indexOf('-'));
-                            n_morse = text.substring(0,text.indexOf('-'));
-                        }else {// . vem antes
-                            morse = text.substring(text.indexOf('.'));
-                            n_morse = text.substring(0,text.indexOf('.'));
-                        }
-                    }else{ //so tem "-"
-                        morse = text.substring(text.indexOf('-'));
-                        n_morse = text.substring(0,text.indexOf('-'));
-                    }
-
-                }else if((text.contains("."))){ //So tem .
-                    morse = text.substring(text.indexOf('.'));
-                    n_morse = text.substring(0,text.indexOf('.'));
-                }
-                if((text.contains("."))||(text.contains("-"))){
-                    char letra;
-                    System.out.println(morse);
-                    try {
-                        letra = tradutor.morseToChar(morse);
-                        String content = n_morse + letra;
-                        escrita.setText(content);
-                    } catch (Exception e) {
-                        escrita.setText(n_morse);
-                    }
-
-                }
-            } else{
-
-            }
-        });
 
         history_list = new ArrayList<>();
 
@@ -165,11 +106,204 @@ public class Button_Morse extends AppCompatActivity {
         });
 
         //Button to write morse code
-        button_morse.setOnClickListener((view) -> {
-            String text = escrita.getText().toString();
-            String dado = ".";
-            String content = text+ dado;
-            escrita.setText(content);
+        System.out.println(typePhone);
+        if (typePhone){
+            button_morse.setOnClickListener((view) -> {
+                String text = textPhone.getText().toString();
+                String dado = ".";
+                String content = text+ dado;
+                textPhone.setText(content);
+            });
+
+
+            //Button to write morse code
+            button_morse.setOnLongClickListener((view) -> {
+                String text = textPhone.getText().toString();
+                String dado = "-";
+                String content = text+ dado;
+                textPhone.setText(content);
+                return true;
+            });
+
+            endChar.setOnClickListener((view) -> {
+                String text = textPhone.getText().toString();
+                String morse=null;
+                String n_morse=null;
+                if (text.length()!=0){
+                    if ((text.contains("-"))){
+                        if((text.contains("."))){ //Tem os 2
+                            if (text.indexOf('-')<text.indexOf('.')){ // - vem antes
+                                morse = text.substring(text.indexOf('-'));
+                                n_morse = text.substring(0,text.indexOf('-'));
+                            }else {// . vem antes
+                                morse = text.substring(text.indexOf('.'));
+                                n_morse = text.substring(0,text.indexOf('.'));
+                            }
+                        }else{ //so tem "-"
+                            morse = text.substring(text.indexOf('-'));
+                            n_morse = text.substring(0,text.indexOf('-'));
+                        }
+
+                    }else if((text.contains("."))){ //So tem .
+                        morse = text.substring(text.indexOf('.'));
+                        n_morse = text.substring(0,text.indexOf('.'));
+                    }
+                    if((text.contains("."))||(text.contains("-"))){
+                        char letra;
+                        System.out.println(morse);
+                        try {
+                            letra = tradutor.morseToChar(morse);
+                            String content = n_morse + letra;
+                            textPhone.setText(content);
+                        } catch (Exception e) {
+                            textPhone.setText(n_morse);
+                        }
+
+                    }
+                } else{
+
+                }
+            });
+
+            buttonEraseAll.setOnClickListener((view) -> {
+                if (textPhone.length() != 0) {
+                    textPhone.setText("");
+                }
+            });
+
+            //Button to delete last string from morse code
+            backspace.setOnClickListener((view)->{
+                String text = textPhone.getText().toString();
+                if (text.length()>0){
+                    text = text.substring(0, text.length()-1);
+                    textPhone.setText(text);
+                }
+            });
+
+            //Button to add a space on the morse code
+            space.setOnClickListener((view) -> {
+                String text = textPhone.getText().toString();
+                String dado = " ";
+                String content = text+ dado;
+                textPhone.setText(content);
+            });
+
+            setPhone.setOnClickListener((view -> {
+                if (typePhone) {
+                    typePhone = false;
+                    setPhone.setText("Change phone");
+                    showToast("Phone number setted");
+                    return;
+                } else if (typePhone == false){
+                    typePhone = true;
+                    textPhone.setText("");
+                    setPhone.setText("Set phone");
+                    showToast("You can now edit the phone");
+                    return;
+                }
+            }));
+
+        } else{
+            button_morse.setOnClickListener((view) -> {
+                String text = escrita.getText().toString();
+                String dado = ".";
+                String content = text+ dado;
+                escrita.setText(content);
+            });
+
+
+            //Button to write morse code
+            button_morse.setOnLongClickListener((view) -> {
+                String text = escrita.getText().toString();
+                String dado = "-";
+                String content = text+ dado;
+                escrita.setText(content);
+                return true;
+            });
+
+            endChar.setOnClickListener((view) -> {
+                String text = escrita.getText().toString();
+                String morse=null;
+                String n_morse=null;
+                if (text.length()!=0){
+                    if ((text.contains("-"))){
+                        if((text.contains("."))){ //Tem os 2
+                            if (text.indexOf('-')<text.indexOf('.')){ // - vem antes
+                                morse = text.substring(text.indexOf('-'));
+                                n_morse = text.substring(0,text.indexOf('-'));
+                            }else {// . vem antes
+                                morse = text.substring(text.indexOf('.'));
+                                n_morse = text.substring(0,text.indexOf('.'));
+                            }
+                        }else{ //so tem "-"
+                            morse = text.substring(text.indexOf('-'));
+                            n_morse = text.substring(0,text.indexOf('-'));
+                        }
+
+                    }else if((text.contains("."))){ //So tem .
+                        morse = text.substring(text.indexOf('.'));
+                        n_morse = text.substring(0,text.indexOf('.'));
+                    }
+                    if((text.contains("."))||(text.contains("-"))){
+                        char letra;
+                        System.out.println(morse);
+                        try {
+                            letra = tradutor.morseToChar(morse);
+                            String content = n_morse + letra;
+                            escrita.setText(content);
+                        } catch (Exception e) {
+                            escrita.setText(n_morse);
+                        }
+
+                    }
+                } else{
+
+                }
+            });
+
+            buttonEraseAll.setOnClickListener((view) -> {
+                if (escrita.length() != 0) {
+                    escrita.setText("");
+                }
+            });
+
+            //Button to delete last string from morse code
+            backspace.setOnClickListener((view)->{
+                String text = escrita.getText().toString();
+                if (text.length()>0){
+                    text = text.substring(0, text.length()-1);
+                    escrita.setText(text);
+                }
+            });
+
+            //Button to add a space on the morse code
+            space.setOnClickListener((view) -> {
+                String text = escrita.getText().toString();
+                String dado = " ";
+                String content = text+ dado;
+                escrita.setText(content);
+            });
+
+            setPhone.setOnClickListener((view -> {
+                if (typePhone) {
+                    typePhone = false;
+                    setPhone.setText("Change phone");
+                    System.out.println(typePhone);
+                    showToast("Phone number setted");
+                    return;
+                } else if (typePhone == false){
+                    typePhone = true;
+                    textPhone.setText("");
+                    setPhone.setText("Set phone");
+                    System.out.println(typePhone);
+                    showToast("You can now edit the phone");
+                    return;
+                }
+            }));
+        }
+
+        buttonToList.setOnClickListener((view) -> {
+            startListActivity();
         });
 
         history.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -180,20 +314,6 @@ public class Button_Morse extends AppCompatActivity {
                 String content = text + history_item;
                 escrita.setText(content);
             }
-        });
-
-
-        //Button to write morse code
-        button_morse.setOnLongClickListener((view) -> {
-            String text = escrita.getText().toString();
-            String dado = "-";
-            String content = text+ dado;
-            escrita.setText(content);
-            return true;
-        });
-
-        buttonToList.setOnClickListener((view) -> {
-            startListActivity();
         });
 
         //Converting the letters from the morse code to dic
