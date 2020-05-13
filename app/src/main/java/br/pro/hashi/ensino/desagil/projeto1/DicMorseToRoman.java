@@ -27,30 +27,30 @@ public class DicMorseToRoman extends AppCompatActivity {
         title.setText("Dicionário Morse -> Roman");
 
 
-        final ListView listDicRight = findViewById(R.id.listDicRight);
+        final ListView listDicRight = findViewById(R.id.listDic);
 
         ArrayList<String> arrayListDicRight = new ArrayList<>();
 
         arrayListDicRight.add("e     -->     "+ translator.charToMorse('e'));
-        arrayListDicRight.add("t     -->     "+ translator.charToMorse('t'));
-        arrayListDicRight.add("i     -->    "+ translator.charToMorse('i'));
+        arrayListDicRight.add("t      -->     "+ translator.charToMorse('t'));
+        arrayListDicRight.add("i      -->    "+ translator.charToMorse('i'));
         arrayListDicRight.add("a     -->    "+ translator.charToMorse('a'));
         arrayListDicRight.add("n     -->    "+ translator.charToMorse('n'));
-        arrayListDicRight.add("m     -->    "+ translator.charToMorse('m'));
+        arrayListDicRight.add("m    -->    "+ translator.charToMorse('m'));
         arrayListDicRight.add("s     -->   "+ translator.charToMorse('s'));
         arrayListDicRight.add("u     -->   "+ translator.charToMorse('u'));
-        arrayListDicRight.add("r     -->   "+ translator.charToMorse('r'));
-        arrayListDicRight.add("w     -->   "+ translator.charToMorse('w'));
+        arrayListDicRight.add("r      -->   "+ translator.charToMorse('r'));
+        arrayListDicRight.add("w    -->   "+ translator.charToMorse('w'));
         arrayListDicRight.add("d     -->   "+ translator.charToMorse('d'));
         arrayListDicRight.add("k     -->   "+ translator.charToMorse('k'));
         arrayListDicRight.add("g     -->   "+ translator.charToMorse('g'));
         arrayListDicRight.add("o     -->   "+ translator.charToMorse('o'));
         arrayListDicRight.add("h     -->  "+ translator.charToMorse('h'));
         arrayListDicRight.add("v     -->  "+ translator.charToMorse('v'));
-        arrayListDicRight.add("f     -->  "+ translator.charToMorse('f'));
-        arrayListDicRight.add("l     -->  "+ translator.charToMorse('l'));
+        arrayListDicRight.add("f      -->  "+ translator.charToMorse('f'));
+        arrayListDicRight.add("l      -->  "+ translator.charToMorse('l'));
         arrayListDicRight.add("p     -->  "+ translator.charToMorse('p'));
-        arrayListDicRight.add("j     -->  "+ translator.charToMorse('j'));
+        arrayListDicRight.add("j      -->  "+ translator.charToMorse('j'));
         arrayListDicRight.add("b     -->  "+ translator.charToMorse('b'));
         arrayListDicRight.add("x     -->  "+ translator.charToMorse('x'));
         arrayListDicRight.add("c     -->  "+ translator.charToMorse('c'));
