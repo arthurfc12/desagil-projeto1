@@ -45,7 +45,7 @@ public class Button_Morse extends AppCompatActivity {
         //TextView where the message is written
         TextView escrita = findViewById(R.id.Title_button);
         //Phone number input
-        EditText textPhone = findViewById(R.id.textPhone);
+        TextView textPhone = findViewById(R.id.textPhone);
         //Button to write the morse code
         Button button_morse = findViewById(R.id.ButtonMorse);
         //Button to send the word from the ListView to the message
