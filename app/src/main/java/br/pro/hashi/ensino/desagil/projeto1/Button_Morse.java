@@ -73,6 +73,21 @@ public class Button_Morse extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, history_list);
 
+        //Button to change the phone Number
+        setPhone.setOnClickListener((view) -> {
+            if (typePhone){
+                typePhone = false;
+                setPhone.setText("Change phone");
+                showToast("Phone number setted");
+                return;
+            }else {
+                typePhone = true;
+                textPhone.setText("");
+                setPhone.setText("Set phone");
+                showToast("You can now edit the phone");
+                return;
+            }
+        });
         //Button to add a space on the morse code
         space.setOnClickListener((view) -> {
             if (typePhone){
@@ -138,7 +153,6 @@ public class Button_Morse extends AppCompatActivity {
                             morse = text.substring(text.indexOf('-'));
                             n_morse = text.substring(0, text.indexOf('-'));
                         }
-
                     } else if ((text.contains("."))) { //So tem .
                         morse = text.substring(text.indexOf('.'));
                         n_morse = text.substring(0, text.indexOf('.'));
@@ -153,12 +167,10 @@ public class Button_Morse extends AppCompatActivity {
                         } catch (Exception e) {
                             textPhone.setText(n_morse);
                         }
-
                     }
                 } else {
 
                 }
-
             } else{
                 String text = escrita.getText().toString();
                 String morse = null;
@@ -177,7 +189,6 @@ public class Button_Morse extends AppCompatActivity {
                             morse = text.substring(text.indexOf('-'));
                             n_morse = text.substring(0, text.indexOf('-'));
                         }
-
                     } else if ((text.contains("."))) { //So tem .
                         morse = text.substring(text.indexOf('.'));
                         n_morse = text.substring(0, text.indexOf('.'));
@@ -195,11 +206,9 @@ public class Button_Morse extends AppCompatActivity {
 
                     }
                 } else {
-
                 }
             }
         });
-
         //Button to send messages and show these messages in the history of last sent messages
         buttonSend.setOnClickListener((view) -> {
             String lastSend = escrita.getText().toString();
@@ -208,27 +217,23 @@ public class Button_Morse extends AppCompatActivity {
                 history.setAdapter(arrayAdapter);
                 arrayAdapter.notifyDataSetChanged();
             }
-
             String message = escrita.getText().toString();
 
             if (message.isEmpty()) {
                 showToast("Mensagem inválida!");
                 return;
             }
-
             String phone = textPhone.getText().toString();
 
             if (!PhoneNumberUtils.isGlobalPhoneNumber(phone)) {
                 showToast("Número inválido!");
                 return;
             }
-
             SmsManager manager = SmsManager.getDefault();
             manager.sendTextMessage(phone, null, message, null, null);
 
             escrita.setText("");
         });
-
         //Button to write morse code
         button_morse.setOnClickListener((view) -> {
             if (typePhone){
@@ -236,7 +241,6 @@ public class Button_Morse extends AppCompatActivity {
                 String dado = ".";
                 String content = text + dado;
                 textPhone.setText(content);
-
             }else {
                 String text = escrita.getText().toString();
                 String dado = ".";
@@ -254,7 +258,6 @@ public class Button_Morse extends AppCompatActivity {
                 escrita.setText(content);
             }
         });
-
 
         //Button to write morse code
         button_morse.setOnLongClickListener((view) -> {
