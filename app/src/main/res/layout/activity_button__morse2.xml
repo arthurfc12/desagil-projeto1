@@ -58,6 +58,18 @@
         android:background="@drawable/border"/>
 
     <Button
+        android:id="@+id/buttonSetPhone"
+        android:layout_width="80dp"
+        android:layout_height="28dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="76dp"
+        android:text="Set phone"
+        android:textSize="10dp"
+        android:background="@drawable/border"/>
+
+    <Button
         android:id="@+id/ButtonMorse"
         android:layout_width="246dp"
         android:layout_height="235dp"

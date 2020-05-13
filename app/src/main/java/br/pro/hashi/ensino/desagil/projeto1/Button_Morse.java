@@ -22,6 +22,7 @@ public class Button_Morse extends AppCompatActivity {
     Translator tradutor = new Translator();
     ArrayAdapter<String> arrayAdapter;
     ArrayList<String> history_list;
+    boolean typePhone = true;
 
     public void startListActivity() {
         Intent startListActivity = new Intent(this, ListActivity.class);
@@ -65,6 +66,12 @@ public class Button_Morse extends AppCompatActivity {
         Button backspace = findViewById(R.id.buttonErase);
         //Erase All
         Button buttonEraseAll = findViewById(R.id.buttonEraseAll);
+        //Set phone button
+        Button setPhone = findViewById(R.id.buttonSetPhone);
+
+        history_list = new ArrayList<>();
+        arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, history_list);
 
         //Button to add a space on the morse code
         space.setOnClickListener((view) -> {
@@ -129,11 +136,6 @@ public class Button_Morse extends AppCompatActivity {
 
             }
         });
-
-        history_list = new ArrayList<>();
-
-        arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
-                android.R.layout.simple_list_item_1, history_list);
 
         //Button to send messages and show these messages in the history of last sent messages
         buttonSend.setOnClickListener((view) -> {
